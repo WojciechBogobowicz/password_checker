@@ -3,7 +3,7 @@ import string
 import random
 from .uttils import random_swap
 
-class UpercaseRule(AbsValidationRule):
+class LowercaseRule(AbsValidationRule):
     def is_validated(self, text: str) -> bool:
         return self._contains_lowecase(text)
     
