@@ -2,7 +2,6 @@ from .rule_abs import AbsValidationRule
 import string
 import random
 from .uttils import random_swap
-import unittest
 
 class UpercaseRule(AbsValidationRule):
     def is_validated(self, text: str) -> bool:
