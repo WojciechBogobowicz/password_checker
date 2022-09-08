@@ -1,5 +1,5 @@
 import unittest
-from validation_rules.rule_lowecase import LowercaseRule
+from validation_rules.rule_islowecase import LowercaseRule
 from validation_rules.uttils import genrate_random_password
 from validator import PasswordValidator
 
