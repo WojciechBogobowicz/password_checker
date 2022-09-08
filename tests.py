@@ -1,7 +1,7 @@
 import unittest
 from validation_rules.rule_islowecase import LowercaseRule
 from validation_rules.uttils import genrate_random_password
-from validator import PasswordValidator
+from validator import CountDown, PasswordValidator
 
 from validation_rules.rule_havedigit import HaveDigitRule
 from validation_rules.rule_correctlength import CorrectLengthRule
@@ -110,7 +110,7 @@ class PasswordValidatorTest(unittest.TestCase):
     def test_get_fixed_password(self):
         self._assertFixed("f;goirjfkj", self.validator)
 
-    def test_get_fixed_password_error_handle(self):
+    def test_get_fixed_password_errors_handle(self):
         with self.assertRaises(RuntimeError):
             self.validator_imposible.get_fixed_password("sdfghj") 
         with self.assertRaises(ValueError):
@@ -121,6 +121,20 @@ class PasswordValidatorTest(unittest.TestCase):
         self.assertTrue(validator._is_password_valid(fixed_pass))
 
 
+class CountDownTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.counter3 = CountDown(3)
+    
+    def test_tick(self):
+        self.assertTrue(self.counter3.tick())
+        self.assertTrue(self.counter3.tick())
+        self.assertFalse(self.counter3.tick())
+    
+    def test_tick_errors_handle(self):
+        with self.assertRaises(ValueError):
+            CountDown(0)
+        with self.assertRaises(ValueError):
+            CountDown(-1)
 
 class UtilsTest(unittest.TestCase):
     def setUp(self) -> None:
