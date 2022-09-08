@@ -140,7 +140,12 @@ class UtilsTest(unittest.TestCase):
     def test_generate_random_password_specialchar(self):
         passwd = genrate_random_password(1, False, False, False, True)
         self.assertTrue(self.spcial_char_rule.is_validated(passwd))
-
+    
+    def test_random_swap(self):
+        items = (1, 2)
+        self.assertEqual(items, random_swap(*items, proba=0))
+        self.assertEqual(items, random_swap(*items[::-1], proba=1))
+        
 
 
 if __name__ == "__main__":
