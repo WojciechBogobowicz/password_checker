@@ -1,4 +1,7 @@
 import random
+import string
+
+SPECIAL_CHARACTERS = "".join([" !#$%&'()*+,-./:;<=>?@[\]^_`{|}~",'"'])
 
 
 def random_swap(item1, item2, proba=0.1):
