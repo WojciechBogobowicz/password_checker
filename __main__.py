@@ -13,9 +13,14 @@ def main():
     def index():
         data = request.data.decode()
         rules_that_dont_passed = validator.get_invalid_rule_names(data)
+        try:
+            fixed_password = validator.get_fixed_password(data)
+        except RuntimeError:
+            return 'Cannot process your request', 508
+
         if rules_that_dont_passed:
             return f"""Your password don't satissify folowing rules: {rules_that_dont_passed}.
-            Maybe, you want use '{validator.get_fixed_password(data)}' as your password instead?"""
+            Maybe, you want use '{fixed_password}' as your password instead?"""
         return "Everything is okay with your password."
 
 
