@@ -190,6 +190,12 @@ class UtilsTest(unittest.TestCase):
         self.assertEqual(items, random_swap(*items, proba=0))
         self.assertEqual(items, random_swap(*items[::-1], proba=1))
     
+    def test_random_swap_handle_exceptions(self):
+        with self.assertRaises(ValueError):
+            random_swap(None, None, -1)
+        with self.assertRaises(ValueError):
+            random_swap(None, None, 2)
+    
         
         
 
