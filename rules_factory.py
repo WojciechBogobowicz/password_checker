@@ -16,13 +16,13 @@ class RulesFactory():
             if isclass(_type) and issubclass(_type, validation_rules.AbsValidationRule):
                 self.rules[name] = _type
 
-    def create_instance(self, rule_name, **kwargs):
+    def create_instance(self, rule_name: str, **kwargs):
         if rule_name in self.rules:
             return self.rules[rule_name](**kwargs)
         else:
             warnings.warn(f"{rule_name} not found. NullRule created instead.")
             return validation_rules.NullRule(rule_name)
     
-    def get_avaliabe_rules_list(self):
-        return self.rules.keys()
+    def get_avaliabe_rules_list(self) -> list[str]:
+        return list(self.rules.keys())
         

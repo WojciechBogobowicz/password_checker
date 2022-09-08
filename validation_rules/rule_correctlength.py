@@ -16,7 +16,7 @@ class CorrectLengthRule(AbsValidationRule):
     def is_validated(self, text: str) -> bool:
         return self.minimal_length <= len(text) <= self.maximal_length
 
-    def fix_validation_issue_if_needed(self, text: str):
+    def fix_validation_issue_if_needed(self, text: str) -> str:
         if len(text) > self.maximal_length:
             return text[len(text) - self.minimal_length:]
         elif len(text) < self.minimal_length:

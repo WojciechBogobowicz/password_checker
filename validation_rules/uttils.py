@@ -15,7 +15,7 @@ def genrate_random_password(
         with_uppercase: bool = True,
         with_digits: bool = True,
         with_specialcharacters: bool = True
-    ):
+    ) -> str:
     base_characters = ''.join([
         string.ascii_lowercase if with_lowercase else '',
         string.ascii_uppercase if with_uppercase else '',

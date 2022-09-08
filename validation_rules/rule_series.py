@@ -11,7 +11,7 @@ class SeriesRule(AbsValidationRule):
         lengths_mask = (len(list(block))<=self.acceptable_in_row for _, block in itertools.groupby(text))
         return all(lengths_mask)
 
-    def fix_validation_issue_if_needed(self, text: str) -> list[str]:
+    def fix_validation_issue_if_needed(self, text: str) -> str:
         shortened_blocks = [str(''.join(list(block)))[:self.acceptable_in_row] for _, block in itertools.groupby(text)]
         return ''.join(shortened_blocks)
 

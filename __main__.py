@@ -4,9 +4,9 @@ from rules_specification import *
 
 
 
-def main():
+def main() -> None:
     app = Flask(__name__)
-    validator = PasswordValidator(specified_rules_impossible)
+    validator = PasswordValidator(specified_rules_task)
 
 
     @app.route('/get-strong-password', methods=['POST'])
@@ -14,7 +14,7 @@ def main():
         data = request.data.decode()
         return get_respond(data)
 
-    def get_respond(data):
+    def get_respond(data: str) -> str:
         rules_that_dont_passed = validator.get_invalid_rule_names(data)
         try:
             fixed_password = validator.get_fixed_password(data)

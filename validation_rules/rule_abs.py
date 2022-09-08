@@ -7,5 +7,5 @@ class AbsValidationRule(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def fix_validation_issue_if_needed(self, text):
+    def fix_validation_issue_if_needed(self, text: str) -> str:
         pass 

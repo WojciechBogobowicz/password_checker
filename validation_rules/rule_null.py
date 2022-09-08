@@ -11,5 +11,5 @@ class NullRule(AbsValidationRule):
         warnings.warn(f"You are trying to use rule {self._name} which isn't implemented in validation rules. NullRulle call insted. Returns always true")
         return True
     
-    def fix_validation_issue_if_needed(self, text):
-        return ''
+    def fix_validation_issue_if_needed(self, text: str) -> str:
+        return text
