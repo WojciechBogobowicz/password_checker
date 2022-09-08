@@ -80,6 +80,21 @@ class UpercaseRuleTest(unittest.TestCase):
         self.assertEqual("ab5De", self.rule.fix_validation_issue_if_needed("ab5De"))
 
 
+class LowercaseRuleTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.rule = LowercaseRule()
+    
+    def test_contains_uppercase(self):
+        self.assertTrue(self.rule._contains_lowercase("abdC7ef"))        
+        self.assertTrue(self.rule._contains_lowercase("f"))        
+        self.assertFalse(self.rule._contains_lowercase("ABCD; EF")) 
+        self.assertFalse(self.rule._contains_lowercase("!A7"))
+
+    def test_fix_validation_issue_if_needed(self):
+        self.assertTrue(self.rule._contains_uppercase(self.rule.fix_validation_issue_if_needed("ABCDEF")))
+        self.assertEqual("ab5De", self.rule.fix_validation_issue_if_needed("ab5De"))
+
+
 class PasswordValidatorTest(unittest.TestCase):
     def setUp(self) -> None:
         self.validator = PasswordValidator(specified_rules)
