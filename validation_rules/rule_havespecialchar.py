@@ -1,7 +1,6 @@
 from .rule_abs import AbsValidationRule
 from random import choice
 from .uttils import random_swap, SPECIAL_CHARACTERS
-import unittest
 
 
 class SpecialCharRule(AbsValidationRule):

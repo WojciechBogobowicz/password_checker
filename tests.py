@@ -1,5 +1,6 @@
 import unittest
 from validation_rules.rule_islowecase import LowercaseRule
+from validation_rules.rule_null import NullRule
 from validator import CountDown, PasswordValidator
 from validation_rules.rule_havedigit import HaveDigitRule
 from validation_rules.rule_correctlength import CorrectLengthRule
@@ -98,6 +99,18 @@ class LowercaseRuleTest(unittest.TestCase):
     def test_fix_validation_issue_if_needed(self):
         self.assertTrue(self.rule._contains_lowercase(self.rule.fix_validation_issue_if_needed("ABCDEF")))
         self.assertEqual("ab5De", self.rule.fix_validation_issue_if_needed("ab5De"))
+
+
+class NullRuleTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.rule = NullRule("name")
+    
+    def test_is_validated(self):
+        self.assertTrue(self.rule.is_validated("asdas"))
+    
+    def test_fix_validation_issue_if_needed(self):
+        password = "12345asd.,/ASD"
+        self.assertEqual(password, self.rule.fix_validation_issue_if_needed(password))
 
 
 class PasswordValidatorTest(unittest.TestCase):
