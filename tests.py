@@ -101,17 +101,26 @@ class LowercaseRuleTest(unittest.TestCase):
 class PasswordValidatorTest(unittest.TestCase):
     def setUp(self) -> None:
         self.validator = PasswordValidator(specified_rules_task)
-        self.validator_adam = PasswordValidator(specified_rules_short)
+        self.validator_short = PasswordValidator(specified_rules_short)
+        self.validator_imposible = PasswordValidator(specified_rules_impossible)
 
     def test_get_fixed_password_adam(self):
-        self._assertFixed("adam", self.validator_adam)
+        self._assertFixed("adam", self.validator_short)
 
     def test_get_fixed_password(self):
         self._assertFixed("f;goirjfkj", self.validator)
 
+    def test_get_fixed_password_error_handle(self):
+        with self.assertRaises(RuntimeError):
+            self.validator_imposible.get_fixed_password("sdfghj") 
+        with self.assertRaises(ValueError):
+            self.validator.get_fixed_password("asdfg", max_tries=0)          
+
     def _assertFixed(self, passowrd, validator):
         fixed_pass = validator.get_fixed_password(passowrd)
         self.assertTrue(validator._is_password_valid(fixed_pass))
+
+
 
 class UtilsTest(unittest.TestCase):
     def setUp(self) -> None:
@@ -145,6 +154,8 @@ class UtilsTest(unittest.TestCase):
         items = (1, 2)
         self.assertEqual(items, random_swap(*items, proba=0))
         self.assertEqual(items, random_swap(*items[::-1], proba=1))
+    
+        
         
 
 
