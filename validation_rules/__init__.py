@@ -1,4 +1,4 @@
-from .rule_correctlength import CorrectLength
+from .rule_correctlength import CorrectLengthRule
 from .rule_null import NullRule
 from .rule_abs import AbsValidationRule
 from .rule_havespecialchar import SpecialCharRule

@@ -2,7 +2,7 @@ import unittest
 from validator import PasswordValidator
 
 from validation_rules.rule_havedigit import HaveDigitRule
-from validation_rules.rule_correctlength import CorrectLength
+from validation_rules.rule_correctlength import CorrectLengthRule
 from validation_rules.rule_series import SeriesRule
 from validation_rules.rule_havespecialchar import SpecialCharRule
 from validation_rules.rule_isupercase import UpercaseRule
@@ -27,8 +27,8 @@ class HaveDigitRuleTest(unittest.TestCase):
 
 class CorrectLengthTest(unittest.TestCase):
     def setUp(self) -> None:
-        self.rule44 = CorrectLength(4, 4)
-        self.rule28 = CorrectLength(2, 8)
+        self.rule44 = CorrectLengthRule(4, 4)
+        self.rule28 = CorrectLengthRule(2, 8)
         
     def test_same_max_min(self):
         self.assertEqual(4, len(self.rule44.fix_validation_issue_if_needed("1234")))

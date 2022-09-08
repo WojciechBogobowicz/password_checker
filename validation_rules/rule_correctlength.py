@@ -6,7 +6,7 @@ import string
 from .uttils import genrate_random_password
 
 
-class CorrectLength(AbsValidationRule):
+class CorrectLengthRule(AbsValidationRule):
     def __init__(self, minimal_length: int=0, maximal_length: int|float=inf) -> None:
         super().__init__() 
         self.minimal_length = minimal_length
@@ -16,7 +16,7 @@ class CorrectLength(AbsValidationRule):
     def is_validated(self, text: str) -> bool:
         return self.minimal_length <= len(text) <= self.maximal_length
 
-    def fix_validation_issue_if_needed(self, text):
+    def fix_validation_issue_if_needed(self, text: str):
         if len(text) > self.maximal_length:
             return text[len(text) - self.minimal_length:]
         elif len(text) < self.minimal_length:
