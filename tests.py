@@ -56,6 +56,12 @@ class SeriesRuleTest(unittest.TestCase):
         self.assertEqual("aaabbccca", self.rule3.fix_validation_issue_if_needed("aaaabbcccccca"))
         self.assertEqual("aaabb???ccca", self.rule3.fix_validation_issue_if_needed("aaaabb??????cccccca"))
         self.assertEqual("aaaąąąbbccca", self.rule3.fix_validation_issue_if_needed("aaaaąąąąąąąbbcccccca"))
+
+    def test_init_exceptions_handle(self):
+        with self.assertRaises(ValueError):
+            SeriesRule(0)
+        with self.assertRaises(ValueError):
+            SeriesRule(-1)
         
 
 class SpecialCharRuleTest(unittest.TestCase):
