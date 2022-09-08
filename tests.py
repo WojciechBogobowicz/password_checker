@@ -1,8 +1,6 @@
 import unittest
 from validation_rules.rule_islowecase import LowercaseRule
-from validation_rules.uttils import genrate_random_password
 from validator import CountDown, PasswordValidator
-
 from validation_rules.rule_havedigit import HaveDigitRule
 from validation_rules.rule_correctlength import CorrectLengthRule
 from validation_rules.rule_series import SeriesRule
@@ -37,13 +35,17 @@ class CorrectLengthTest(unittest.TestCase):
         self.assertEqual(4, len(self.rule44.fix_validation_issue_if_needed("1234")))
         self.assertEqual(4, len(self.rule44.fix_validation_issue_if_needed("123456")))
         self.assertEqual(4, len(self.rule44.fix_validation_issue_if_needed("1")))
-        
 
     def test_diff_max_min(self):
         self.assertTrue(2 <= len(self.rule28.fix_validation_issue_if_needed("1234")) <= 8)
         self.assertTrue(2 <= len(self.rule28.fix_validation_issue_if_needed("123456789012")) <= 8)
         self.assertTrue(2 <= len(self.rule28.fix_validation_issue_if_needed("1")) <= 8)
         
+    def test_init_error_handle(self):
+        with self.assertRaises(ValueError):
+            CorrectLengthRule(-1, 4)
+        with self.assertRaises(ValueError):
+            CorrectLengthRule(6, 4)
 
 class SeriesRuleTest(unittest.TestCase):
     def setUp(self) -> None:
