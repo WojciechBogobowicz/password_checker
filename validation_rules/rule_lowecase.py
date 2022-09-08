@@ -13,4 +13,4 @@ class LowercaseRule(AbsValidationRule):
     def fix_validation_issue_if_needed(self, text):
         if self.is_validated(text):
             return text
-        return ''.join(random_swap(text, random.choice(string.ascii_uppercase)))
+        return ''.join(random_swap(text, random.choice(string.ascii_lowercase)))
