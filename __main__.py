@@ -6,7 +6,7 @@ from rules_specification import *
 
 def main():
     app = Flask(__name__)
-    validator = PasswordValidator(specified_rules)
+    validator = PasswordValidator(specified_rules_impossible)
 
 
     @app.route('/get-strong-password', methods=['POST'])

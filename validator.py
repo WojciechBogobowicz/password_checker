@@ -32,7 +32,7 @@ class __CountDown:
 
     def _assert_positive_ticks_num(self) -> None:
         if self._ticks <= 0:
-            raise ValueError("ticks have to be positive")
+            raise ValueError("ticks have to be positive number")
 
     def tick(self) -> bool:
         self._ticks = self._ticks - 1

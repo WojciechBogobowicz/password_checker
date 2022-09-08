@@ -100,8 +100,8 @@ class LowercaseRuleTest(unittest.TestCase):
 
 class PasswordValidatorTest(unittest.TestCase):
     def setUp(self) -> None:
-        self.validator = PasswordValidator(specified_rules)
-        self.validator_adam = PasswordValidator(specified_rules_adam)
+        self.validator = PasswordValidator(specified_rules_task)
+        self.validator_adam = PasswordValidator(specified_rules_short)
 
     def test_get_fixed_password_adam(self):
         self._assertFixed("adam", self.validator_adam)
