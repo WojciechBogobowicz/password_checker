@@ -22,10 +22,6 @@ class PasswordValidator:
         return all(validation_flags)
     
     def get_invalid_rule_names(self, passwd):
-        acc = []
-        for rule in self.rules:
-            if not rule.is_validated(passwd):
-                acc.append(rule.__class__.__name__)
-        return ", ".join(acc)
+        return ', '.join(rule.__class__.__name__ for rule in self.rules if not rule.is_validated(passwd))
 
     # class 
