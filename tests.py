@@ -1,4 +1,6 @@
 import unittest
+from validation_rules.rule_lowecase import LowercaseRule
+from validation_rules.uttils import genrate_random_password
 from validator import PasswordValidator
 
 from validation_rules.rule_havedigit import HaveDigitRule
@@ -6,6 +8,7 @@ from validation_rules.rule_correctlength import CorrectLengthRule
 from validation_rules.rule_series import SeriesRule
 from validation_rules.rule_havespecialchar import SpecialCharRule
 from validation_rules.rule_isupercase import UpercaseRule
+from validation_rules.uttils import genrate_random_password, random_swap
 from rules_specification import *
 
 
@@ -91,7 +94,7 @@ class LowercaseRuleTest(unittest.TestCase):
         self.assertFalse(self.rule._contains_lowercase("!A7"))
 
     def test_fix_validation_issue_if_needed(self):
-        self.assertTrue(self.rule._contains_uppercase(self.rule.fix_validation_issue_if_needed("ABCDEF")))
+        self.assertTrue(self.rule._contains_lowercase(self.rule.fix_validation_issue_if_needed("ABCDEF")))
         self.assertEqual("ab5De", self.rule.fix_validation_issue_if_needed("ab5De"))
 
 
@@ -109,6 +112,35 @@ class PasswordValidatorTest(unittest.TestCase):
     def _assertFixed(self, passowrd, validator):
         fixed_pass = validator.get_fixed_password(passowrd)
         self.assertTrue(validator._is_password_valid(fixed_pass))
+
+class UtilsTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.digit_rule = HaveDigitRule()
+        self.correct_length_rule = CorrectLengthRule(4, 4)
+        self.spcial_char_rule = SpecialCharRule()
+        self.upercase_rule = UpercaseRule()
+        self.lowercase_rule = LowercaseRule()
+    
+    def test_generate_random_password_len(self):
+        passwd = genrate_random_password(4)
+        self.assertTrue(self.correct_length_rule.is_validated(passwd))
+    
+    def test_generate_random_password_lowercase(self):
+        passwd = genrate_random_password(1, True, False, False, False)
+        self.assertTrue(self.lowercase_rule.is_validated(passwd))
+        
+    def test_generate_random_password_upercase(self):
+        passwd = genrate_random_password(1, False, True, False, False)
+        self.assertTrue(self.upercase_rule.is_validated(passwd))
+
+    def test_generate_random_password_digit(self):
+        passwd = genrate_random_password(1, False, False, True, False)
+        self.assertTrue(self.digit_rule.is_validated(passwd))
+
+    def test_generate_random_password_specialchar(self):
+        passwd = genrate_random_password(1, False, False, False, True)
+        self.assertTrue(self.spcial_char_rule.is_validated(passwd))
+
 
 
 if __name__ == "__main__":
