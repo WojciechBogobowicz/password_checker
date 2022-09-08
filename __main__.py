@@ -12,6 +12,9 @@ def main():
     @app.route('/get-strong-password', methods=['POST'])
     def index():
         data = request.data.decode()
+        return get_respond(data)
+
+    def get_respond(data):
         rules_that_dont_passed = validator.get_invalid_rule_names(data)
         try:
             fixed_password = validator.get_fixed_password(data)
