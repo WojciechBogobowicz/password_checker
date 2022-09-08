@@ -8,23 +8,23 @@ class PasswordValidator:
         self.rules_dict = rules_dictionary
         self.rules = [self.factory.create_instance(rule_name, **kwargs) for rule_name, kwargs in self.rules_dict.items()]
             
-    def get_fixed_password(self, passwd: str, max_tries: int=1000) -> str:
+    def get_fixed_password(self, password: str, max_tries: int=1000) -> str:
         safe_switch = CountDown(max_tries)
-        while not self._is_password_valid(passwd) and safe_switch.tick():
+        while not self._is_password_valid(password) and safe_switch.tick():
             for rule in self.rules:
-                passwd = rule.fix_validation_issue_if_needed(passwd)
+                password = rule.fix_validation_issue_if_needed(password)
         if safe_switch:
-            return passwd
+            return password
         raise RuntimeError(f"Unable to get fixed password in {max_tries} tries.")
 
-    def _is_password_valid(self, passwd: str) -> bool:
+    def _is_password_valid(self, password: str) -> bool:
         validation_flags = []
         for rule in self.rules:
-            validation_flags.append(rule.is_validated(passwd))
+            validation_flags.append(rule.is_validated(password))
         return all(validation_flags)
     
-    def get_invalid_rule_names(self, passwd: str) -> str:
-        return ', '.join(rule.__class__.__name__ for rule in self.rules if not rule.is_validated(passwd))
+    def get_invalid_rule_names(self, password: str) -> str:
+        return ', '.join(rule.__class__.__name__ for rule in self.rules if not rule.is_validated(password))
 
 
 class CountDown:
