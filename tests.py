@@ -192,16 +192,13 @@ class UtilsTest(unittest.TestCase):
     def test_random_swap(self):
         items = (1, 2)
         self.assertEqual(items, random_swap(*items, proba=0))
-        self.assertEqual(items, random_swap(*items[::-1], proba=1))
+        self.assertEqual(items[::-1], random_swap(*items, proba=1))
     
     def test_random_swap_handle_exceptions(self):
         with self.assertRaises(ValueError):
             random_swap(None, None, -1)
         with self.assertRaises(ValueError):
             random_swap(None, None, 2)
-    
-        
-        
 
 
 if __name__ == "__main__":

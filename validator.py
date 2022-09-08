@@ -6,7 +6,8 @@ class PasswordValidator:
 
     def __init__(self, rules_dictionary: dict) -> None:
         self.rules_dict = rules_dictionary
-        self.rules = [self.factory.create_instance(rule_name, **kwargs) for rule_name, kwargs in self.rules_dict.items()]
+        rule = self.factory.create_instance
+        self.rules = [rule(rule_name, **kwargs) for rule_name, kwargs in self.rules_dict.items()]
             
     def get_fixed_password(self, password: str, max_tries: int=1000) -> str:
         safe_switch = CountDown(max_tries)
