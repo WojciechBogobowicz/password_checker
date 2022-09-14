@@ -19,7 +19,7 @@ def main() -> None:
         try:
             fixed_password = validator.get_fixed_password(data)
         except RuntimeError:
-            return 'Cannot process your request', 508
+            return 'Cannot process your request', 508 
 
         if rules_that_dont_passed:
             return f"""Your password don't satissify folowing rules: {rules_that_dont_passed}.

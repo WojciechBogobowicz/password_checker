@@ -19,9 +19,7 @@ class PasswordValidator:
         raise RuntimeError(f"Unable to get fixed password in {max_tries} tries.")
 
     def _is_password_valid(self, password: str) -> bool:
-        validation_flags = []
-        for rule in self.rules:
-            validation_flags.append(rule.is_validated(password))
+        validation_flags = [rule.is_validated(password) for rule in self.rules]
         return all(validation_flags)
     
     def get_invalid_rule_names(self, password: str) -> str:
