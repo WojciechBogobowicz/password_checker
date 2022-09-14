@@ -1,6 +1,6 @@
 import itertools
+
 from .rule_abs import AbsValidationRule
-import itertools
 
 
 class SeriesRule(AbsValidationRule):

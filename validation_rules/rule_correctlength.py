@@ -1,9 +1,7 @@
-from .rule_abs import AbsValidationRule
 from math import inf
-import unittest
-import random
-import string
 from .uttils import genrate_random_password
+
+from .rule_abs import AbsValidationRule
 
 
 class CorrectLengthRule(AbsValidationRule):
@@ -38,4 +36,3 @@ class CorrectLengthRule(AbsValidationRule):
             missing_len = self.minimal_length - len(text)
             return f"{text}{genrate_random_password(missing_len)}"
         return text
-        

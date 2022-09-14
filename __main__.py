@@ -1,4 +1,5 @@
 from flask import Flask, request
+
 from validator import PasswordValidator
 from rules_specification import *
 

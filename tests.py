@@ -1,4 +1,5 @@
 import unittest
+
 from validation_rules.rule_islowecase import LowercaseRule
 from validation_rules.rule_null import NullRule
 from validator import CountDown, PasswordValidator

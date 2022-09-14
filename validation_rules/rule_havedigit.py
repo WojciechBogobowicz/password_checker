@@ -1,8 +1,8 @@
-from .rule_abs import AbsValidationRule
 import string
 from random import choice
+
+from .rule_abs import AbsValidationRule
 from .uttils import random_swap
-import unittest
 
 
 class HaveDigitRule(AbsValidationRule):

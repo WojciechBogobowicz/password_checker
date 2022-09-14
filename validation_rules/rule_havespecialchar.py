@@ -1,5 +1,6 @@
-from .rule_abs import AbsValidationRule
 from random import choice
+
+from .rule_abs import AbsValidationRule
 from .uttils import random_swap, SPECIAL_CHARACTERS
 
 

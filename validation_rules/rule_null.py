@@ -1,5 +1,6 @@
-from .rule_abs import AbsValidationRule
 import warnings
+
+from .rule_abs import AbsValidationRule
 
 
 class NullRule(AbsValidationRule):

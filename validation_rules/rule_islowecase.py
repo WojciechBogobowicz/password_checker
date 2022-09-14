@@ -1,8 +1,8 @@
-from .rule_abs import AbsValidationRule
 import string
 import random
-from .uttils import random_swap
 
+from .uttils import random_swap
+from .rule_abs import AbsValidationRule
 
 class LowercaseRule(AbsValidationRule):
     def is_validated(self, text: str) -> bool:
