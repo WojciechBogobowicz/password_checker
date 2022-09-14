@@ -8,4 +8,4 @@ class AbsValidationRule(abc.ABC):
 
     @abc.abstractmethod
     def fix_validation_issue_if_needed(self, text: str) -> str:
-        pass 
+        pass
