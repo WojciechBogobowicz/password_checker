@@ -38,3 +38,4 @@ class CorrectLengthRule(AbsValidationRule):
             missing_len = self.minimal_length - len(text)
             return f"{text}{genrate_random_password(missing_len)}"
         return text
+        
