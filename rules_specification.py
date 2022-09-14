@@ -1,4 +1,4 @@
-specified_rules_task = {
+task = {
     "SeriesRule": {"acceptable_in_row": 3},
     "HaveDigitRule": {},
     "SpecialCharRule": {},
@@ -6,12 +6,12 @@ specified_rules_task = {
     "CorrectLengthRule": {"minimal_length": 20},
 }
 
-specified_rules_short = {
+short = {
     "HaveDigitRule": {},
     "CorrectLengthRule": {"minimal_length": 4, "maximal_length": 4},
 }
 
-specified_rules_impossible = {
+impossible = {
     "HaveDigitRule": {},
     "SpecialCharRule": {},
     "CorrectLengthRule": {"maximal_length": 1},

@@ -150,9 +150,9 @@ class NullRuleTest(unittest.TestCase):
 
 class PasswordValidatorTest(unittest.TestCase):
     def setUp(self) -> None:
-        self.validator = PasswordValidator(specified_rules_task)
-        self.validator_short = PasswordValidator(specified_rules_short)
-        self.validator_imposible = PasswordValidator(specified_rules_impossible)
+        self.validator = PasswordValidator(task)
+        self.validator_short = PasswordValidator(short)
+        self.validator_imposible = PasswordValidator(impossible)
 
     def test_get_fixed_password_adam(self):
         self._assertFixed("adam", self.validator_short)

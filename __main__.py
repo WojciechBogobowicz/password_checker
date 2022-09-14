@@ -1,12 +1,12 @@
 from flask import Flask, request
 
 from validator import PasswordValidator
-from rules_specification import *
+import rules_specification
 
 
 def main() -> None:
     app = Flask(__name__)
-    validator = PasswordValidator(rules_dictionary=specified_rules_task)
+    validator = PasswordValidator(rules_dictionary=rules_specification.task)
 
     @app.route("/get-strong-password", methods=["POST"])
     def index():

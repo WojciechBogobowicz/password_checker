@@ -1,6 +1,6 @@
 from math import inf
-from .uttils import genrate_random_password
 
+from .uttils import genrate_random_password
 from .rule_abs import AbsValidationRule
 
 
