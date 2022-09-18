@@ -2,7 +2,6 @@ import unittest
 
 from validation_rules.rule_islowecase import LowercaseRule
 from validation_rules.rule_null import NullRule
-from validator import CountDown, PasswordValidator
 from validation_rules.rule_havedigit import HaveDigitRule
 from validation_rules.rule_correctlength import CorrectLengthRule
 from validation_rules.rule_series import SeriesRule
@@ -10,6 +9,7 @@ from validation_rules.rule_havespecialchar import SpecialCharRule
 from validation_rules.rule_isupercase import UpercaseRule
 from validation_rules.uttils import genrate_random_password, random_swap
 from rules_specification import *
+from validator import CountDown, PasswordValidator
 
 
 class HaveDigitRuleTest(unittest.TestCase):
