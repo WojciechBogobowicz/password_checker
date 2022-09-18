@@ -3,7 +3,7 @@ import typing
 import warnings
 
 import validation_rules
-from validation_rules.rule_abs import ValidationRule
+from validation_rules.rule_protocol import ValidationRule
 
 
 class RulesFactory:
