@@ -1,7 +1,9 @@
-from inspect import getmembers, isclass, isabstract
+from inspect import getmembers, isclass
+import typing
 import warnings
 
 import validation_rules
+from validation_rules.rule_abs import ValidationRule
 
 
 class RulesFactory:
@@ -12,13 +14,14 @@ class RulesFactory:
 
     def load_rules(self) -> None:
         classes = getmembers(
-            validation_rules, lambda m: isclass(m) and not isabstract(m)
+            validation_rules,
+            lambda m: isclass(m) and not isinstance(m, typing._ProtocolMeta),
         )
         for name, _type in classes:
-            if isclass(_type) and issubclass(_type, validation_rules.AbsValidationRule):
+            if isclass(_type) and issubclass(_type, validation_rules.ValidationRule):
                 self.rules[name] = _type
 
-    def create_instance(self, rule_name: str, **kwargs):
+    def create_instance(self, rule_name: str, **kwargs) -> ValidationRule:
         if rule_name not in self.rules:
             self._create_null_rule(rule_name)
         return self.rules[rule_name](**kwargs)

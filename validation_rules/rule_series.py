@@ -1,9 +1,6 @@
 import itertools
 
-from .rule_abs import AbsValidationRule
-
-
-class SeriesRule(AbsValidationRule):
+class SeriesRule:
     def __init__(self, acceptable_in_row: int = 2) -> None:
         self.acceptable_in_row = acceptable_in_row
         self._assert_acceptable_in_row_is_positive()

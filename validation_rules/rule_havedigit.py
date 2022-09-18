@@ -1,11 +1,10 @@
 import string
 from random import choice
 
-from .rule_abs import AbsValidationRule
 from .uttils import random_swap
 
 
-class HaveDigitRule(AbsValidationRule):
+class HaveDigitRule:
     def is_validated(self, text: str) -> bool:
         return self._contains_digit(text)
 

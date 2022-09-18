@@ -1,10 +1,9 @@
 from math import inf
 
 from .uttils import genrate_random_password
-from .rule_abs import AbsValidationRule
 
 
-class CorrectLengthRule(AbsValidationRule):
+class CorrectLengthRule:
     def __init__(
         self, minimal_length: int = 0, maximal_length: int | float = inf
     ) -> None:

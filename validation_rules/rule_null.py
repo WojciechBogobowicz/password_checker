@@ -1,9 +1,7 @@
 import warnings
 
-from .rule_abs import AbsValidationRule
 
-
-class NullRule(AbsValidationRule):
+class NullRule:
     def __init__(self, name: str = "") -> None:
         super().__init__()
         self._name = name

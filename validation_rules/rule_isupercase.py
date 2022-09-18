@@ -2,10 +2,9 @@ import string
 import random
 
 from .uttils import random_swap
-from .rule_abs import AbsValidationRule
 
 
-class UpercaseRule(AbsValidationRule):
+class UpercaseRule:
     def is_validated(self, text: str) -> bool:
         return self._contains_uppercase(text)
 

@@ -1,10 +1,9 @@
 from random import choice
 
-from .rule_abs import AbsValidationRule
 from .uttils import random_swap, SPECIAL_CHARACTERS
 
 
-class SpecialCharRule(AbsValidationRule):
+class SpecialCharRule:
     def __init__(self) -> None:
         super().__init__()
         self.SPECIAL_CHARACTERS_SET = set(SPECIAL_CHARACTERS)

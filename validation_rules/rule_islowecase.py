@@ -2,10 +2,9 @@ import string
 import random
 
 from .uttils import random_swap
-from .rule_abs import AbsValidationRule
 
 
-class LowercaseRule(AbsValidationRule):
+class LowercaseRule:
     def is_validated(self, text: str) -> bool:
         return self._contains_lowercase(text)
 

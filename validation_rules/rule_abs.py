@@ -1,11 +1,16 @@
-import abc
+from typing import Protocol, runtime_checkable
+import typing
 
 
-class AbsValidationRule(abc.ABC):
-    @abc.abstractmethod
-    def is_validated(self, text: str) -> bool:
-        pass
+@runtime_checkable
+class ValidationRule(Protocol):
+    def is_validated(self, text: str) -> bool: ...
 
-    @abc.abstractmethod
-    def fix_validation_issue_if_needed(self, text: str) -> str:
-        pass
+
+    def fix_validation_issue_if_needed(self, text: str) -> str: ...
+    
+    
+
+
+
+
